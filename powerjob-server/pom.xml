@@ -26,14 +26,14 @@
 
     <properties>
         <swagger.version>2.9.2</swagger.version>
-        <springboot.version>2.3.4.RELEASE</springboot.version>
+        <springboot.version>2.6.0</springboot.version>
         <powerjob.common.version>4.0.1</powerjob.common.version>
         <!-- MySQL version that corresponds to spring-boot-dependencies version. -->
         <mysql.version>8.0.19</mysql.version>
         <ojdbc.version>19.7.0.0</ojdbc.version>
         <mssql-jdbc.version>7.4.1.jre8</mssql-jdbc.version>
         <db2-jdbc.version>11.5.0.0</db2-jdbc.version>
-        <postgresql.version>42.2.14</postgresql.version>
+        <postgresql.version>42.3.3</postgresql.version>
         <h2.db.version>1.4.200</h2.db.version>
 
         <zip4j.version>2.5.2</zip4j.version>
