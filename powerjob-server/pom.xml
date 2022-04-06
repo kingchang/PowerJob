@@ -26,7 +26,7 @@
 
     <properties>
         <swagger.version>2.9.2</swagger.version>
-        <springboot.version>2.3.4.RELEASE</springboot.version>
+        <springboot.version>2.5.8</springboot.version>
         <powerjob.common.version>4.0.1</powerjob.common.version>
         <!-- MySQL version that corresponds to spring-boot-dependencies version. -->
         <mysql.version>8.0.19</mysql.version>
@@ -42,7 +42,7 @@
         <commons.net.version>3.6</commons.net.version>
         <fastjson.version>1.2.68</fastjson.version>
         <dingding.version>1.0.1</dingding.version>
-        <vertx-web.version>4.0.2</vertx-web.version>
+        <vertx-web.version>4.1.7</vertx-web.version>
 
         <!-- skip this module when deploying. -->
         <maven.deploy.skip>true</maven.deploy.skip>
