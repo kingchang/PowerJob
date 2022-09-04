@@ -21,7 +21,7 @@
 
         <spring.boot.version>2.3.4.RELEASE</spring.boot.version>
 
-        <powerjob.official.processors.version>1.1.0</powerjob.official.processors.version>
+        <powerjob.official.processors.version>1.2.0</powerjob.official.processors.version>
 
         <!-- dependency for dynamic sql processor -->
         <mysql.version>8.0.19</mysql.version>
