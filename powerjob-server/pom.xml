@@ -29,7 +29,7 @@
         <springboot.version>2.3.4.RELEASE</springboot.version>
         <powerjob.common.version>4.0.1</powerjob.common.version>
         <!-- MySQL version that corresponds to spring-boot-dependencies version. -->
-        <mysql.version>8.0.19</mysql.version>
+        <mysql.version>8.0.31</mysql.version>
         <ojdbc.version>19.7.0.0</ojdbc.version>
         <mssql-jdbc.version>7.4.1.jre8</mssql-jdbc.version>
         <db2-jdbc.version>11.5.0.0</db2-jdbc.version>
@@ -39,7 +39,7 @@
         <zip4j.version>2.5.2</zip4j.version>
         <jgit.version>5.7.0.202003110725-r</jgit.version>
         <mvn.invoker.version>3.0.1</mvn.invoker.version>
-        <commons.net.version>3.6</commons.net.version>
+        <commons.net.version>3.9.0</commons.net.version>
         <fastjson.version>1.2.68</fastjson.version>
         <dingding.version>1.0.1</dingding.version>
         <vertx-web.version>4.0.2</vertx-web.version>
