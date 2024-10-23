@@ -56,7 +56,7 @@
         <powerjob-remote-impl-http.version>5.1.0</powerjob-remote-impl-http.version>
         <powerjob-remote-impl-akka.version>5.1.0</powerjob-remote-impl-akka.version>
         <aliyun-sdk-oss.version>3.17.1</aliyun-sdk-oss.version>
-        <aws-java-sdk-s3.version>1.12.665</aws-java-sdk-s3.version>
+        <aws-java-sdk-s3.version>1.12.777</aws-java-sdk-s3.version>
         <commons-collections4.version>4.4</commons-collections4.version>
     </properties>
 
