@@ -26,6 +26,11 @@ public class WorkerStatusVO {
     private String protocol;
     private String tag;
     private String lastActiveTime;
+
+    /**
+     * worker 版本信息
+     */
+    private String version;
     /**
      * 上一次worker在线时间（取 worker 端时间）
      */
@@ -108,5 +113,6 @@ public class WorkerStatusVO {
         this.heavyTaskTrackerNum = workerInfo.getHeavyTaskTrackerNum();
         this.lastOverloadTime = workerInfo.getLastOverloadTime();
         this.overloading = workerInfo.isOverloading();
+        this.version = workerInfo.getVersion();
     }
 }

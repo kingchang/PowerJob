@@ -43,6 +43,11 @@ public class WorkerInfo {
 
     private boolean overloading;
 
+    /**
+     * worker 版本信息
+     */
+    private String version;
+
     private SystemMetrics systemMetrics;
 
     private List<DeployedContainerInfo> containerInfos;
@@ -58,6 +63,7 @@ public class WorkerInfo {
         tag = workerHeartbeat.getTag();
         systemMetrics = workerHeartbeat.getSystemMetrics();
         containerInfos = workerHeartbeat.getContainerInfos();
+        version = workerHeartbeat.getVersion();
 
         lightTaskTrackerNum = workerHeartbeat.getLightTaskTrackerNum();
         heavyTaskTrackerNum = workerHeartbeat.getHeavyTaskTrackerNum();
