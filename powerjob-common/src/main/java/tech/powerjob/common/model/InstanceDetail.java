@@ -59,6 +59,11 @@ public class InstanceDetail implements PowerSerializable {
     private String extendValue;
 
     /**
+     * 运行时参数，覆盖 Job 的一些配置（如指定机器执行）
+     */
+    private String runtimeConfig;
+
+    /**
      * Task detail, used by MapReduce or Broadcast tasks.
      * 命名有点问题，实际是 task 统计信息
      */
@@ -78,6 +83,11 @@ public class InstanceDetail implements PowerSerializable {
      * Running times.
      */
     private Long runningTimes;
+
+    /**
+     * 调度元信息
+     */
+    private String meta;
 
     /**
      * Extended fields. Middlewares are not supposed to update frequently.

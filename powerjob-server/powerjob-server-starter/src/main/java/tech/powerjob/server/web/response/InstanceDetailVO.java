@@ -7,6 +7,9 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.util.CollectionUtils;
 import tech.powerjob.common.PowerSerializable;
 import tech.powerjob.common.model.InstanceDetail;
+import tech.powerjob.common.model.InstanceMeta;
+import tech.powerjob.common.model.JobInstanceRuntimeConfig;
+import tech.powerjob.common.serialize.JsonUtils;
 import tech.powerjob.common.utils.CommonUtils;
 
 import java.util.Collections;
@@ -80,6 +83,10 @@ public class InstanceDetailVO {
      * 秒级任务专用
      */
     private List<InstanceDetailVO.SubInstanceDetail> subInstanceDetails;
+
+    private JobInstanceRuntimeConfig runtimeConfig;
+
+    private InstanceMeta meta;
 
     /**
      * 重试次数
@@ -155,6 +162,9 @@ public class InstanceDetailVO {
         // 拷贝 MR Task 结果
         List<TaskDetailInfoVO> taskDetailInfoVOList = Optional.ofNullable(origin.getQueriedTaskDetailInfoList()).orElse(Collections.emptyList()).stream().map(TaskDetailInfoVO::from).collect(Collectors.toList());
         vo.setQueriedTaskDetailInfoList(taskDetailInfoVOList);
+
+        vo.setMeta(JsonUtils.parseObjectUnsafe(origin.getMeta(), InstanceMeta.class));
+        vo.setRuntimeConfig(JsonUtils.parseObjectUnsafe(origin.getRuntimeConfig(), JobInstanceRuntimeConfig.class));
 
         return vo;
     }

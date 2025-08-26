@@ -185,7 +185,7 @@ public class JobServiceImpl implements JobService {
 
         final InstanceInfoDO instanceInfo = instanceService.create(jobInfo.getId(), jobInfo.getAppId(), jobInfo.getJobParams(),
                 instanceParams, null, System.currentTimeMillis() + Math.max(delay, 0),
-                outerKey, runJobRequest.getExtendValue()
+                outerKey, runJobRequest.getExtendValue(), JsonUtils.toJSONString(runJobRequest.getRuntimeConfig())
         );
         instanceInfoRepository.flush();
         if (delay <= 0) {
