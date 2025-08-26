@@ -92,6 +92,14 @@ public class JobController {
         return ResultDTO.success(jobService.runJob(request.getAppId(), request));
     }
 
+    @PostMapping("/runPlus")
+    @ApiPermission(name = "Job-RunPlus", roleScope = RoleScope.APP, requiredPermission = Permission.OPS)
+    public ResultDTO<Long> runImmediatelyPlus(@RequestBody RunJobRequest runJobRequest, HttpServletRequest hsr) {
+        runJobRequest.setAppId(AuthHeaderUtils.fetchAppIdL(hsr));
+        preCheck(String.valueOf(runJobRequest.getJobId()), hsr);
+        return ResultDTO.success(jobService.runJob(runJobRequest.getAppId(), runJobRequest));
+    }
+
     @PostMapping("/list")
     @ApiPermission(name = "Job-List", roleScope = RoleScope.APP, requiredPermission = Permission.READ)
     public ResultDTO<PageResult<JobInfoVO>> listJobs(@RequestBody QueryJobInfoRequest request, HttpServletRequest hsr) {
