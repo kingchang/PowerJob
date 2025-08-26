@@ -4,6 +4,8 @@ import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
+import tech.powerjob.common.model.JobInstanceRuntimeConfig;
+import tech.powerjob.common.serialize.JsonUtils;
 import tech.powerjob.server.common.SJ;
 import tech.powerjob.server.common.module.WorkerInfo;
 import tech.powerjob.server.persistence.remote.model.InstanceInfoDO;
@@ -25,6 +27,12 @@ public class DesignatedWorkerFilter implements WorkerFilter {
     public boolean filter(WorkerInfo workerInfo, JobInfoDO jobInfo, InstanceInfoDO instanceInfoDO) {
 
         String designatedWorkers = jobInfo.getDesignatedWorkers();
+
+        // 若任务实例指定，则使用任务实例的过滤配置
+        JobInstanceRuntimeConfig jobInstanceRuntimeConfig = JsonUtils.parseObjectUnsafe(instanceInfoDO.getRuntimeConfig(), JobInstanceRuntimeConfig.class);
+        if (jobInstanceRuntimeConfig != null && StringUtils.isNotEmpty(jobInstanceRuntimeConfig.getDesignatedWorkers())) {
+            designatedWorkers = jobInstanceRuntimeConfig.getDesignatedWorkers();
+        }
 
         // no worker is specified, no filter of any
         if (StringUtils.isEmpty(designatedWorkers)) {
