@@ -32,6 +32,7 @@ public class DesignatedWorkerFilter implements WorkerFilter {
         JobInstanceRuntimeConfig jobInstanceRuntimeConfig = JsonUtils.parseObjectUnsafe(instanceInfoDO.getRuntimeConfig(), JobInstanceRuntimeConfig.class);
         if (jobInstanceRuntimeConfig != null && StringUtils.isNotEmpty(jobInstanceRuntimeConfig.getDesignatedWorkers())) {
             designatedWorkers = jobInstanceRuntimeConfig.getDesignatedWorkers();
+            log.info("[DesignatedWorkerFilter] [{}] use instance designatedWorkers: {}", instanceInfoDO.getInstanceId(), designatedWorkers);
         }
 
         // no worker is specified, no filter of any
