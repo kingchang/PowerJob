@@ -49,6 +49,8 @@ public class WorkerStatusVO {
      */
     private int status;
 
+    private WorkerInfo workerInfo;
+
     /**
      *  12.3%(4 cores)
      */
@@ -114,5 +116,7 @@ public class WorkerStatusVO {
         this.lastOverloadTime = workerInfo.getLastOverloadTime();
         this.overloading = workerInfo.isOverloading();
         this.version = workerInfo.getVersion();
+
+        this.workerInfo = workerInfo;
     }
 }
