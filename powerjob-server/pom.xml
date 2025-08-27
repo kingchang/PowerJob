@@ -36,7 +36,7 @@
         <mssql-jdbc.version>7.4.1.jre8</mssql-jdbc.version>
         <db2-jdbc.version>11.5.0.0</db2-jdbc.version>
         <postgresql.version>42.6.0</postgresql.version>
-        <h2.db.version>2.2.224</h2.db.version>
+        <h2.db.version>2.3.232</h2.db.version>
         <mongodb-driver-sync.version>4.10.2</mongodb-driver-sync.version>
 
         <zip4j.version>2.11.2</zip4j.version>
@@ -44,7 +44,7 @@
         <mvn.invoker.version>3.0.1</mvn.invoker.version>
         <commons.net.version>3.9.0</commons.net.version>
         <fastjson.version>1.2.83</fastjson.version>
-        <dingding.version>1.0.1</dingding.version>
+        <dingding.version>2.0.0</dingding.version>
 
         <!-- skip this module when deploying. -->
         <maven.deploy.skip>true</maven.deploy.skip>
