@@ -40,7 +40,7 @@
         <mongodb-driver-sync.version>4.10.2</mongodb-driver-sync.version>
 
         <zip4j.version>2.11.2</zip4j.version>
-        <jgit.version>5.13.2.202306221912-r</jgit.version>
+        <jgit.version>6.10.1.202505221210-r</jgit.version>
         <mvn.invoker.version>3.0.1</mvn.invoker.version>
         <commons.net.version>3.9.0</commons.net.version>
         <fastjson.version>1.2.83</fastjson.version>
