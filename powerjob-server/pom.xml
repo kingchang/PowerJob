@@ -49,7 +49,7 @@
         <!-- skip this module when deploying. -->
         <maven.deploy.skip>true</maven.deploy.skip>
 
-        <groovy.version>3.0.10</groovy.version>
+        <groovy.version>3.0.22</groovy.version>
         <cron-utils.version>9.2.1</cron-utils.version>
 
         <powerjob-common.version>5.1.2</powerjob-common.version>
