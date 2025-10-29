@@ -15,13 +15,14 @@
     <packaging>jar</packaging>
 
     <properties>
-        <spring.version>5.3.31</spring.version>
-        <h2.db.version>2.2.224</h2.db.version>
-        <hikaricp.version>4.0.3</hikaricp.version>
-        <junit.version>5.9.1</junit.version>
+        <!-- Java 版本 -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>25</maven.compiler.target>
 
-        <logback.version>1.2.13</logback.version>
-
+        <!-- Hibernate 7 -->
+        <hibernate.version>7.0.0.Final</hibernate.version>
+        <okhttp.version>5.2.1</okhttp.version>
+        <!-- PowerJob 模块版本 -->
         <powerjob-common.version>5.1.2</powerjob-common.version>
         <powerjob-remote-framework.version>5.1.2</powerjob-remote-framework.version>
         <powerjob-remote-impl-akka.version>5.1.2</powerjob-remote-impl-akka.version>
@@ -30,77 +31,119 @@
     </properties>
 
     <dependencies>
-
-        <!-- 仍然手动引入 common 依赖并置顶，保证依赖仲裁时占据上风 -->
+        <!-- PowerJob 依赖保持不变 -->
         <dependency>
             <groupId>tech.powerjob</groupId>
             <artifactId>powerjob-common</artifactId>
             <version>${powerjob-common.version}</version>
         </dependency>
 
-        <!-- PowerJob 通讯框架 -->
+        <!-- OKHttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+
+        <!-- OKHttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp-urlconnection</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>tech.powerjob</groupId>
             <artifactId>powerjob-remote-framework</artifactId>
             <version>${powerjob-remote-framework.version}</version>
         </dependency>
 
-        <!-- PowerJob 通讯层具体实现，按需选择自己需要的通讯器即可。如果包冲突可尝试更换通讯器实现，并排除未使用的通讯器包 -->
-        <!-- 4.3.x 版本前 AKKA 都是 PowerJob 通讯层的唯一实现，考虑到兼容性 4.3.x 默认仍为 AKKA，但由于 AKKA 后续收费，最终会废弃该模块，扶正太子（HTTP）上位 -->
         <dependency>
             <groupId>tech.powerjob</groupId>
             <artifactId>powerjob-remote-impl-akka</artifactId>
             <version>${powerjob-remote-impl-akka.version}</version>
         </dependency>
+
         <dependency>
             <groupId>tech.powerjob</groupId>
             <artifactId>powerjob-remote-impl-http</artifactId>
             <version>${powerjob-remote-impl-http.version}</version>
         </dependency>
+
         <dependency>
             <groupId>tech.powerjob</groupId>
             <artifactId>powerjob-remote-impl-mu</artifactId>
             <version>${powerjob-remote-impl-mu.version}</version>
         </dependency>
 
-        <!-- h2 database -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.db.version}</version>
-        </dependency>
-        <!-- HikariCP, Java8 只能用 4.X 版本 -->
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>${hikaricp.version}</version>
-        </dependency>
-
-        <!-- Spring 依赖（非强依赖） -->
+        <!-- Spring Framework 6.2 核心依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Junit 测试 -->
+        <!-- Hibernate 7 -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Jakarta EE API -->
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 数据库依赖 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+
+        <!-- 测试依赖 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <!-- log for test stage -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>3.5.7</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
