@@ -26,6 +26,11 @@ public class WorkerStatusVO {
     private String protocol;
     private String tag;
     private String lastActiveTime;
+
+    /**
+     * worker 版本信息
+     */
+    private String version;
     /**
      * 上一次worker在线时间（取 worker 端时间）
      */
@@ -43,6 +48,8 @@ public class WorkerStatusVO {
      * 1 -> 健康，绿色，2 -> 一般，橙色，3 -> 糟糕，红色，9999 -> 非在线机器
      */
     private int status;
+
+    private WorkerInfo workerInfo;
 
     /**
      *  12.3%(4 cores)
@@ -108,5 +115,8 @@ public class WorkerStatusVO {
         this.heavyTaskTrackerNum = workerInfo.getHeavyTaskTrackerNum();
         this.lastOverloadTime = workerInfo.getLastOverloadTime();
         this.overloading = workerInfo.isOverloading();
+        this.version = workerInfo.getVersion();
+
+        this.workerInfo = workerInfo;
     }
 }

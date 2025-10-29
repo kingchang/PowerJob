@@ -2,6 +2,7 @@ package tech.powerjob.server.core.instance;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,6 +14,7 @@ import tech.powerjob.common.enums.InstanceStatus;
 import tech.powerjob.common.exception.PowerJobException;
 import tech.powerjob.common.model.InstanceDetail;
 import tech.powerjob.common.model.InstanceMeta;
+import tech.powerjob.common.model.JobInstanceRuntimeConfig;
 import tech.powerjob.common.request.ServerQueryInstanceStatusReq;
 import tech.powerjob.common.request.ServerStopInstanceReq;
 import tech.powerjob.common.request.query.InstancePageQuery;
@@ -88,7 +90,7 @@ public class InstanceService {
      * @param expectTriggerTime 预期执行时间
      * @return 任务实例ID
      */
-    public InstanceInfoDO create(Long jobId, Long appId, String jobParams, String instanceParams, Long wfInstanceId, Long expectTriggerTime, String outerKey, String extendValue) {
+    public InstanceInfoDO create(Long jobId, Long appId, String jobParams, String instanceParams, Long wfInstanceId, Long expectTriggerTime, String outerKey, String extendValue, String runtimeConfig) {
 
         Long instanceId = idGenerateService.allocate();
         Date now = new Date();
@@ -108,6 +110,7 @@ public class InstanceService {
         newInstanceInfo.setLastReportTime(-1L);
         newInstanceInfo.setOuterKey(outerKey);
         newInstanceInfo.setExtendValue(extendValue);
+        newInstanceInfo.setRuntimeConfig(runtimeConfig);
         newInstanceInfo.setGmtCreate(now);
         newInstanceInfo.setGmtModified(now);
 
@@ -301,9 +304,10 @@ public class InstanceService {
         InstanceDetail detail = new InstanceDetail();
         detail.setStatus(instanceStatus.getV());
 
+        BeanUtils.copyProperties(instanceInfoDO, detail);
+
         // 只要不是运行状态，只需要返回简要信息
         if (instanceStatus != RUNNING) {
-            BeanUtils.copyProperties(instanceInfoDO, detail);
             return detail;
         }
 
@@ -329,8 +333,6 @@ public class InstanceService {
             }
         }
 
-        // 失败则返回基础版信息
-        BeanUtils.copyProperties(instanceInfoDO, detail);
         return detail;
     }
 
@@ -346,6 +348,9 @@ public class InstanceService {
     private static InstanceInfoDTO directConvert(InstanceInfoDO instanceInfoDO) {
         InstanceInfoDTO instanceInfoDTO = new InstanceInfoDTO();
         BeanUtils.copyProperties(instanceInfoDO, instanceInfoDTO);
+        if (StringUtils.isNotEmpty(instanceInfoDO.getRuntimeConfig())) {
+            instanceInfoDTO.setRuntimeConfig(JsonUtils.parseObjectUnsafe(instanceInfoDO.getRuntimeConfig(), JobInstanceRuntimeConfig.class));
+        }
         return instanceInfoDTO;
     }
 }

@@ -2,6 +2,7 @@ package tech.powerjob.common.response;
 
 import tech.powerjob.common.enums.InstanceStatus;
 import lombok.Data;
+import tech.powerjob.common.model.JobInstanceRuntimeConfig;
 
 import java.util.Date;
 
@@ -80,6 +81,11 @@ public class InstanceInfoDTO {
      * 扩展属性，用于 OPENAPI 场景上下文参数的透传
      */
     private String extendValue;
+
+    /**
+     * 运行时参数，覆盖 Job 的一些配置（如指定机器执行）
+     */
+    private JobInstanceRuntimeConfig runtimeConfig;
 
     private Date gmtCreate;
     private Date gmtModified;

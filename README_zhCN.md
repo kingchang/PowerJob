@@ -5,6 +5,12 @@
 </p>
 
 <p align="center">
+<a href="https://github.com/PowerJob/PowerJob"><img src="https://img.shields.io/github/stars/PowerJob/PowerJob?style=social" alt="GitHub"></a>
+<a href="https://gitee.com/KFCFans/PowerJob"><img src="https://gitee.com/KFCFans/PowerJob/badge/star.svg?theme=gvp)" alt="Gitee"></a>
+<a href="https://gitcode.com/PowerStack/PowerJob"><img src="https://gitcode.com/PowerStack/PowerJob/star/badge.svg" alt="LICENSE"></a>
+</p>
+
+<p align="center">
 <a href="https://github.com/PowerJob/PowerJob/actions"><img src="https://github.com/PowerJob/PowerJob/workflows/Java%20CI%20with%20Maven/badge.svg?branch=master" alt="actions"></a>
 <a href="https://search.maven.org/search?q=tech.powerjob"><img alt="Maven Central" src="https://img.shields.io/maven-central/v/tech.powerjob/powerjob-worker"></a>
 <a href="https://github.com/PowerJob/PowerJob/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/kfcfans/powerjob?color=%23E59866"></a>

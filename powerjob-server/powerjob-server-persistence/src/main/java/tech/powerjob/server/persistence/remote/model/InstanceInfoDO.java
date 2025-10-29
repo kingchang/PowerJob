@@ -110,6 +110,11 @@ public class InstanceInfoDO {
     private String extendValue;
 
     /**
+     * 运行时参数，覆盖 Job 的一些配置（如指定机器执行）
+     */
+    private String runtimeConfig;
+
+    /**
      * 调度元信息
      */
     private String meta;

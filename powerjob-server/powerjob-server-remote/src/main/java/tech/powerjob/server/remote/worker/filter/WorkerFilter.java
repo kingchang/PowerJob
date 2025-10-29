@@ -1,7 +1,8 @@
 package tech.powerjob.server.remote.worker.filter;
 
-import tech.powerjob.server.persistence.remote.model.JobInfoDO;
 import tech.powerjob.server.common.module.WorkerInfo;
+import tech.powerjob.server.persistence.remote.model.InstanceInfoDO;
+import tech.powerjob.server.persistence.remote.model.JobInfoDO;
 
 /**
  * filter worker by system metrics or other info
@@ -17,5 +18,5 @@ public interface WorkerFilter {
      * @param jobInfoDO job info
      * @return true will remove the worker in process list
      */
-    boolean filter(WorkerInfo workerInfo, JobInfoDO jobInfoDO);
+    boolean filter(WorkerInfo workerInfo, JobInfoDO jobInfoDO, InstanceInfoDO instanceInfoDO);
 }

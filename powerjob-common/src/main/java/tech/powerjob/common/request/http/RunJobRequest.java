@@ -2,6 +2,8 @@ package tech.powerjob.common.request.http;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import tech.powerjob.common.PowerSerializable;
+import tech.powerjob.common.model.JobInstanceRuntimeConfig;
 
 /**
  * 运行任务
@@ -11,7 +13,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class RunJobRequest {
+public class RunJobRequest implements PowerSerializable {
 
     private Long jobId;
     /**
@@ -31,6 +33,11 @@ public class RunJobRequest {
      * 扩展属性，用于 OPENAPI 场景上下文参数的透传
      */
     private String extendValue;
+
+    /**
+     * 运行时参数，覆盖 Job 的一些配置（如指定机器执行）
+     */
+    private JobInstanceRuntimeConfig runtimeConfig;
 
     /* 无需填写，系统自动填充 */
     private Long appId;
