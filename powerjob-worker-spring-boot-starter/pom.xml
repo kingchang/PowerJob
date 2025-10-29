@@ -17,9 +17,9 @@
     <properties>
         <powerjob.worker.version>5.1.2</powerjob.worker.version>
         <springboot.version>3.5.7</springboot.version>
-        <java.version>25</java.version>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>25</maven.compiler.target>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <dependencies>

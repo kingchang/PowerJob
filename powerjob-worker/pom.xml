@@ -16,8 +16,8 @@
 
     <properties>
         <!-- Java 版本 -->
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>25</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
 
         <!-- Hibernate 7 -->
         <hibernate.version>7.0.0.Final</hibernate.version>
